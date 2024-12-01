@@ -55,6 +55,11 @@ class Program() {
         return (pointTimeLine, targetFunctionCalled, cycles);
     }
 
+    private static double Penalty(double x, double y, double z, double penalty)
+    {
+        return TargetFunction(x, y, z) + penalty * Math.Pow(EqualityConstraint(x, y, z) ? 0 : (x * y + y * z + x * z) * 2 - 1, 2);
+    }
+
     private static double GoldenSectionSearch(Func<double, double> func, ref int cycles, ref int targetFunctionCalled, double leftBorder = 0, double rightBorder = 5)
     {
         double T = (-1 + Math.Sqrt(5)) / 2;
